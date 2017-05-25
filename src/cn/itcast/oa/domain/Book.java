@@ -1,5 +1,8 @@
 package cn.itcast.oa.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Book {
 	private Long id;
 	private String name;
