@@ -26,12 +26,12 @@ public interface IBaseDao<T> {
 	/**
 	 * 根据id查询
 	 */
-	public T getById(Long id);
+	public T findById(Long id);
 	
 	/**
 	 * 一次查询多个对象
 	 */
-	public List<T> getByIds(Long[] ids);
+	public List<T> findByIds(Long[] ids);
 	
 	/**
 	 * 查询所有

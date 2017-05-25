@@ -16,9 +16,9 @@ public class RoleServiceImpl implements IRoleService{
 	@Resource
 	private IRoleDao roleDao;
 	@Override
-	public void save(Role role) {
+	public void save(Role model) {
 		// TODO Auto-generated method stub
-		
+		roleDao.save(model);
 	}
 
 	@Override
@@ -34,13 +34,13 @@ public class RoleServiceImpl implements IRoleService{
 	}
 
 	@Override
-	public Role getById(Long id) {
+	public Role findById(Long id) {
 		// TODO Auto-generated method stub
-		return roleDao.getById(id);
+		return roleDao.findById(id);
 	}
 
 	@Override
-	public List<Role> getByIds(Long[] ids) {
+	public List<Role> findByIds(Long[] ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}

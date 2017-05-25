@@ -23,12 +23,12 @@ public interface IRoleService {
 	/**
 	 * 根据id查询
 	 */
-	public Role getById(Long id);
+	public Role findById(Long id);
 	
 	/**
 	 * 一次查询多个对象
 	 */
-	public List<Role> getByIds(Long[] ids);
+	public List<Role> findByIds(Long[] ids);
 	
 	/**
 	 * 查询所有

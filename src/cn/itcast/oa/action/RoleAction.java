@@ -28,13 +28,6 @@ public class RoleAction extends BaseAction<Role>{
 	return "list";
 	}
 	/*
-	 * 增加岗位role
-	 */
-	public String add(){
-		roleService.save(model);
-		return "toList";
-	}
-	/*
 	 * 根据id删除岗位
 	 */
 	public String delete(){
@@ -45,7 +38,7 @@ public class RoleAction extends BaseAction<Role>{
 	 * 跳转到修改页面
 	 */
 	public String editUI(){
-		Role role=roleService.getById(model.getId());
+		Role role=roleService.findById(model.getId());
 		getValueStack().push(role);
 		return "editUI";
 	}
@@ -53,10 +46,23 @@ public class RoleAction extends BaseAction<Role>{
 	 * 修改岗位信息
 	 */
 	public String edit(){
-		Role role=roleService.getById(model.getId());
+		Role role=roleService.findById(model.getId());
 		role.setName(model.getName());
 		role.setDescription(model.getDescription());
 		roleService.update(role);
+		return "toList";
+	}
+	/*
+	 * 添加薪职位
+	 */
+	public String addUI(){
+		return "addUI";
+	}
+	/*
+	 * 增加新岗位
+	 */
+	public String add(){
+		roleService.save(model);
 		return "toList";
 	}
 }	

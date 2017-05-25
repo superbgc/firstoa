@@ -24,7 +24,7 @@ public interface IBookService {
 	/**
 	 * 根据id查询
 	 */
-	public Book getById(Long id);
+	public Book findById(Long id);
 	
 	/**
 	 * 一次查询多个对象

@@ -47,11 +47,11 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		return getSession().createQuery(hql).list();
 	}
 
-	public T getById(Long id) {
+	public T findById(Long id) {
 		return (T) getSession().get(clazz, id);
 	}
 	
-	public List<T> getByIds(Long[] ids) {
+	public List<T> findByIds(Long[] ids) {
 		String hql = "FROM " + clazz.getSimpleName() + " WHERE id in (:ids)";
 		Query query = getSession().createQuery(hql);
 		query.setParameterList("ids", ids);//一次赋值多个

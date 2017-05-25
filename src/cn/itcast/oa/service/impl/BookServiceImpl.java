@@ -30,15 +30,15 @@ public class BookServiceImpl implements IBookService {
 	}
 
 	@Override
-	public Book getById(Long id) {
+	public Book findById(Long id) {
 		// TODO Auto-generated method stub
-		return bookDao.getById(id);
+		return bookDao.findById(id);
 	}
 
 	@Override
 	public List<Book> getByIds(Long[] ids) {
 		// TODO Auto-generated method stub
-		return bookDao.getByIds(ids);
+		return bookDao.findByIds(ids);
 	}
 
 	@Override
