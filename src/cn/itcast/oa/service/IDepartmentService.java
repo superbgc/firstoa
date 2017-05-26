@@ -12,4 +12,12 @@ public interface IDepartmentService {
 
 	Department findById(Long id);
 
+	void delete(Long id);
+
+	void update(Department dept);
+
+	List<Department> findTopList();
+
+	List<Department> findChildList(Long parentId);
+
 }

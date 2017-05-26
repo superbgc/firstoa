@@ -2,6 +2,8 @@ package cn.itcast.oa.base;
 
 import java.util.List;
 
+import cn.itcast.oa.domain.Department;
+
 /**
  * 通用Dao接口
  * @author zhaoqx
@@ -15,6 +17,7 @@ public interface IBaseDao<T> {
 	
 	/**
 	 * 根据id删除
+	 * @return 
 	 */
 	public void delete(Long id);
 	

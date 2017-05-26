@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>部门列表</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <%@include file="/WEB-INF/jsp/public/header.jsp" %>
 </head>
 <body>

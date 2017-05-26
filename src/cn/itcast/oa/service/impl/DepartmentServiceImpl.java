@@ -33,5 +33,29 @@ public class DepartmentServiceImpl implements IDepartmentService {
 		// TODO Auto-generated method stub
 		return departmentDao.findById(id);
 	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		departmentDao.delete(id);
+	}
+
+	@Override
+	public void update(Department dept) {
+		// TODO Auto-generated method stub
+		departmentDao.update(dept);
+	}
+
+	@Override
+	public List<Department> findTopList() {
+		// TODO Auto-generated method stub
+		return departmentDao.findTopList();
+	}
+
+	@Override
+	public List<Department> findChildList(Long parentId) {
+		// TODO Auto-generated method stub
+		return departmentDao.findChildList(parentId);
+	}
 	
 }
