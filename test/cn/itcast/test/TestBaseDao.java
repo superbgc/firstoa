@@ -56,7 +56,7 @@ public class TestBaseDao {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		IBookService bookService = (IBookService) ctx.getBean("bookServiceImpl");
 		
-		Book book = bookService.getById(2L);
+		Book book = bookService.findById(2L);
 		System.out.println(book);
 	}
 	
@@ -85,7 +85,7 @@ public class TestBaseDao {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		IBookService bookService = (IBookService) ctx.getBean("bookServiceImpl");
 		
-		bookService.delete(1L);
+	
 	}
 	
 	/**

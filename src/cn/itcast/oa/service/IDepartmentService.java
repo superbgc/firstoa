@@ -12,7 +12,7 @@ public interface IDepartmentService {
 
 	Department findById(Long id);
 
-	void delete(Long id);
+	void delete(Department department);
 
 	void update(Department dept);
 

@@ -35,9 +35,9 @@ public class DepartmentServiceImpl implements IDepartmentService {
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(Department department) {
 		// TODO Auto-generated method stub
-		departmentDao.delete(id);
+		departmentDao.delete(department.getId());
 	}
 
 	@Override
