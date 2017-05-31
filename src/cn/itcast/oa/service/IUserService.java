@@ -12,6 +12,8 @@ public interface IUserService{
 
 	void delete(User model);
 
+	void save(User model);
+
 	
 	
 }

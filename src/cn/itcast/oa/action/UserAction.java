@@ -1,5 +1,6 @@
 package cn.itcast.oa.action;
 
+import java.util.HashSet;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -51,7 +52,16 @@ public class UserAction extends BaseAction<User> {
 	}
 	//添加user'
 	public String add(){
-		return null;
+		if(departmentId!=null){
+			Department d=departmentService.findById(departmentId);
+			model.setDepartment(d);
+		}
+		if(roleIds!=null&&roleIds.length>0){
+			List<Role> role=roleService.findByIds(roleIds);
+			model.setRoles(new HashSet<Role>(role));
+		}
+		userService.save(model);
+		return "toList";
 	}
 	public String delete(){
 		userService.delete(model);

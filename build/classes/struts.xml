@@ -47,6 +47,7 @@
     			<param name="actionName">user_list</param>
     			<param name="namespace">/</param>
     		</result>
+    		<result name="addUI">/WEB-INF/jsp/user/save.jsp</result>
     	</action>
     	
     </package>

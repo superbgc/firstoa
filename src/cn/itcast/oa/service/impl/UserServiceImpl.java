@@ -37,4 +37,10 @@ public class UserServiceImpl implements IUserService{
 	 userDao.delete(model.getId());
 	}
 
+	@Override
+	public void save(User model) {
+		// TODO Auto-generated method stub
+		userDao.save(model);
+	}
+
 }
