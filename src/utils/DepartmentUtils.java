@@ -25,7 +25,7 @@ public class DepartmentUtils {
 			treeList.add(copy);
 			//子树
 			Set<Department> children=d.getChildren();
-			walkTree(children,treeList,"     "+prefix,removeId);
+			walkTree(children,treeList,"　　"+prefix,removeId);
 		}
 	}
 }

@@ -51,6 +51,7 @@ public class DepartmentAction extends BaseAction<Department> {
 		//准备部门列表数据，用于select框显示
 		//List<Department> list = departmentService.findAll();
 		//showTree(list,"");
+		
 		List<Department> topList = departmentService.findTopList();//所有顶级部门列表
 		List<Department> treeList = DepartmentUtils.getTreeList(topList,null);
 		for(Department d:treeList){
@@ -89,12 +90,14 @@ public class DepartmentAction extends BaseAction<Department> {
 	 */
 	public String editUI(){
 		//准备数据：部门列表
-		List<Department> list = departmentService.findAll();
+		//List<Department> list = departmentService.findAll();
 		
 		//准备数据：要修改的部门
 		Department dept = departmentService.findById(model.getId());
+		List<Department> list=departmentService.findTopList();
+		List<Department> treeList=DepartmentUtils.getTreeList(list,dept.getId());
 		
-		getValueStack().set("departmentList", list);
+		getValueStack().set("departmentList", treeList);
 		getValueStack().push(dept);
 		
 		if(dept.getParent() != null){

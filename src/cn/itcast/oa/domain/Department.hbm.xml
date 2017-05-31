@@ -11,10 +11,10 @@
 		<property name="description" length="128"/>
 		
 		<!-- 子部门和上级部门的多对一关系 -->
-		<many-to-one name="parent" lazy="false" fetch="join" class="cn.itcast.oa.domain.Department" column="parentId"/>
+		<many-to-one name="parent"  class="cn.itcast.oa.domain.Department" column="parentId"/>
 		
 		<!-- 上级部门和子部门之间的一对多关系   cascade="delete"删除上级部门的时候连带子部门全部删除 -->
-		<set name="children" cascade="delete" inverse="true" lazy="false">
+		<set name="children" cascade="delete">
 			<key column="parentId"/>
 			<one-to-many  class="cn.itcast.oa.domain.Department"/>
 		</set>
