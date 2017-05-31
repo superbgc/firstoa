@@ -2,6 +2,7 @@ package cn.itcast.oa.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,5 +29,13 @@ public class DepartmentDaoImpl extends BaseDaoImpl<Department> implements IDepar
 		String hql="from Department d where d.parent.id= ?";
 		return this.getSession().createQuery(hql).setParameter(0, parentId).list();
 	}
-		
+
+
+	@Override
+	public List<Department> findByName(String name) {
+		// TODO Auto-generated method stub
+		String hql="from Department d where d.name= ?";
+		return this.getSession().createQuery(hql).setParameter(0, name).list();
+	}
+	
 }

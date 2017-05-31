@@ -20,4 +20,6 @@ public interface IDepartmentService {
 
 	List<Department> findChildList(Long parentId);
 
+	List<Department> findByName(String name);
+
 }

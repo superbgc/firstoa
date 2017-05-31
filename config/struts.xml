@@ -36,6 +36,10 @@
     			<param name="actionName">department_list?parentId=${parentId}</param>
     			<param name="namespace">/</param>
     		</result>
+    		<result name="error">/WEB-INF/jsp/department/error.jsp</result>
+    		
+    		
+    		
     		<result name="editUI">/WEB-INF/jsp/department/save.jsp</result>
     	</action>
     	

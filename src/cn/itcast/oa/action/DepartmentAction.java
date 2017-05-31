@@ -1,12 +1,15 @@
 package cn.itcast.oa.action;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.itcast.oa.base.BaseAction;
 import cn.itcast.oa.domain.Department;
+import utils.DepartmentUtils;
 @Controller
 @Scope("prototype")
 public class DepartmentAction extends BaseAction<Department> {
@@ -23,6 +26,7 @@ public class DepartmentAction extends BaseAction<Department> {
 		}else{
 			//查询子部门列表
 			list = departmentService.findChildList(parentId);
+			System.out.println(list);
 			
 			Department dept = departmentService.findById(parentId);
 			getValueStack().set("dept", dept);
@@ -45,10 +49,17 @@ public class DepartmentAction extends BaseAction<Department> {
 	 */
 	public String addUI(){
 		//准备部门列表数据，用于select框显示
-		List<Department> list = departmentService.findAll();
-		getValueStack().set("departmentList", list);
+		//List<Department> list = departmentService.findAll();
+		//showTree(list,"");
+		List<Department> topList = departmentService.findTopList();//所有顶级部门列表
+		List<Department> treeList = DepartmentUtils.getTreeList(topList,null);
+		for(Department d:treeList){
+			System.out.println(d.getName());
+		}
+		getValueStack().set("departmentList", treeList);
 		
 		return "addUI";
+	
 	}
 	
 	/**
@@ -61,9 +72,16 @@ public class DepartmentAction extends BaseAction<Department> {
 		}else{
 			model.setParent(null);
 		}
-		departmentService.save(model);
+		System.out.println(departmentService.findByName(model.getName())+"111111111111111");
+		if(departmentService.findByName(model.getName())==null){
+			departmentService.save(model);
+			return "toList";
+		}else{
+			return "error";
+		}
 		
-		return "toList";
+		
+		
 	}
 	
 	/**
@@ -113,6 +131,14 @@ public class DepartmentAction extends BaseAction<Department> {
 
 	public Long getParentId() {
 		return parentId;
+	}
+	public void showTree(Collection<Department> d,String prefix){
+		
+		for(Department a:d){
+			model.setName(a.getName()+prefix);
+			Set<Department> c=a.getChildren();
+			showTree(c,"  "+prefix);
+		}
 	}
 }
 

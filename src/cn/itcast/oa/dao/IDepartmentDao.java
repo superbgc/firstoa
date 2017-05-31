@@ -10,5 +10,7 @@ public interface IDepartmentDao extends IBaseDao<Department>{
 	List<Department> findTopList();
 
 	List<Department> findChildList(Long parentId);
+
+	List<Department> findByName(String name);
 	
 }

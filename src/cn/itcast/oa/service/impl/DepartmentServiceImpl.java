@@ -57,5 +57,11 @@ public class DepartmentServiceImpl implements IDepartmentService {
 		// TODO Auto-generated method stub
 		return departmentDao.findChildList(parentId);
 	}
+
+	@Override
+	public	List<Department>  findByName(String name) {
+		// TODO Auto-generated method stub
+		return departmentDao.findByName(name);
+	}
 	
 }
