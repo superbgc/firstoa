@@ -14,6 +14,8 @@ public interface IUserService{
 
 	void save(User model);
 
+	void update(User model);
+
 	
 	
 }
