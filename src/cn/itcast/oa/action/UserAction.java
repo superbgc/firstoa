@@ -1,10 +1,12 @@
 package cn.itcast.oa.action;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -70,15 +72,19 @@ public class UserAction extends BaseAction<User> {
 	}
 	//添加user'
 	public String add(){
-		if(departmentId!=null){
-			Department d=departmentService.findById(departmentId);
-			model.setDepartment(d);
+		if(departmentId != null){
+			Department dept = departmentService.findById(departmentId);
+			model.setDepartment(dept);//用户关联部门
 		}
-		if(roleIds!=null&&roleIds.length>0){
-			List<Role> role=roleService.findByIds(roleIds);
-			model.setRoles(new HashSet<Role>(role));
+		
+		if(roleIds != null && roleIds.length > 0){
+			List<Role> roleList = roleService.findByIds(roleIds);
+			System.out.println(model.getName()+"kkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+			model.setRoles(new HashSet<Role>(roleList));
 		}
+		
 		userService.save(model);
+		
 		return "toList";
 	}
 	//删除user
@@ -86,11 +92,27 @@ public class UserAction extends BaseAction<User> {
 		userService.delete(model);
 		return "toList";
 	}
+	//初始化密码
 	public String initPassword(){
 		User user=userService.findById(model.getId());
 		user.setPassword(MD5Utils.md5("1234"));
 		userService.update(user);
 		return "toList";
+	}
+	public String findByLoginName(){
+		String loginName=model.getLoginName();
+		int count=userService.findByLoginName(loginName);
+		String flag="1";
+		if(count>0){
+			//当前登录名已存在 不能使用
+			flag="0";
+		}
+		try {
+			ServletActionContext.getResponse().getWriter().print(flag);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return NONE;
 	}
 	public Long getDepartmentId() {
 		return departmentId;

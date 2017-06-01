@@ -16,6 +16,8 @@ public interface IUserService{
 
 	void update(User model);
 
+	int findByLoginName(String loginName);
+
 	
 	
 }

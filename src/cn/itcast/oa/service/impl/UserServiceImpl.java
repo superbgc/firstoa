@@ -49,4 +49,10 @@ public class UserServiceImpl implements IUserService{
 		userDao.update(model);
 	}
 
+	@Override
+	public int findByLoginName(String loginName) {
+		// TODO Auto-generated method stub
+		return userDao.findByLoginName(loginName);
+	}
+
 }
