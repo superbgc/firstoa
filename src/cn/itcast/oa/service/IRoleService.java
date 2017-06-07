@@ -28,7 +28,7 @@ public interface IRoleService {
 	/**
 	 * 一次查询多个对象
 	 */
-	public List<Role> findByIds(Long[] ids);
+	public List<Role> findByIds(Long[] roleIds);
 	
 	/**
 	 * 查询所有

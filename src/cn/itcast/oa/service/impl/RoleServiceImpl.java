@@ -42,7 +42,7 @@ public class RoleServiceImpl implements IRoleService{
 	@Override
 	public List<Role> findByIds(Long[] ids) {
 		// TODO Auto-generated method stub
-		return null;
+		return roleDao.findByIds(ids);
 	}
 
 	@Override

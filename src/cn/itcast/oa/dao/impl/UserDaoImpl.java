@@ -12,14 +12,14 @@ import cn.itcast.oa.dao.IUserDao;
 import cn.itcast.oa.domain.User;
 @Repository
 public class UserDaoImpl extends BaseDaoImpl<User> implements IUserDao{
-	@Resource
-	SessionFactory sessionFactory;
 	@Override
 	public int findByLoginName(String loginName) {
-		// TODO Auto-generated method stub
-		String hql="from User u where u.loginName= ?";
-		return (int) this.getSession().createQuery(hql).setParameter(0, loginName).uniqueResult();
+		/**
+		 * 根据登录名统计
+		 */
+			String hql = "SELECT COUNT(id) FROM User u WHERE u.loginName = ?";
+			Long count = (Long) this.getSession().createQuery(hql).setParameter(0, loginName).uniqueResult();
+			return count.intValue();
+		}
 	}
-	
 
-}

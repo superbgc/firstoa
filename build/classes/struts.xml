@@ -12,7 +12,6 @@
 	<constant name="struts.ui.theme" value="simple"/>
     <package name="default" namespace="/" extends="struts-default">
     	<action name="bookAction" class="bookAction"></action>
-    	
     	<!-- 岗位管理Action -->
     	<action name="role_*"  class="roleAction" method="{1}">
     		<result name="list">/WEB-INF/jsp/role/list.jsp</result>
@@ -23,6 +22,7 @@
     		</result>
     		<result name="editUI">/WEB-INF/jsp/role/save.jsp</result>
     		<result name="addUI">/WEB-INF/jsp/role/save.jsp</result>
+    		<result name="setPrivilegeUI">/WEB-INF/jsp/role/setPrivilegeUI.jsp</result>
     		<result name="add">
     			<param name="actionName">role_list</param>
     			<param name="namespace">/</param>
@@ -49,6 +49,9 @@
     		</result>
     		<result name="addUI">/WEB-INF/jsp/user/save.jsp</result>
     	</action>
-    	
+    	<!-- 首页Action -->
+    	<action name="home_*" class="homeAction" method="{1}">
+    		<result name="{1}">/WEB-INF/jsp/home/{1}.jsp</result>
+    	</action>
     </package>
 </struts>
